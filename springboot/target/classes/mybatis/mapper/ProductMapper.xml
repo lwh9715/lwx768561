@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.ProductMapper">
+    <select id="getProductById" resultType="com.example.bean.Product">
+        select * from product where p_id=#{p_id}
+    </select>
+    <select id="getProducts" resultType="com.example.bean.Product">
+        select * from product
+    </select>
+    <insert id="addProduct" keyProperty="p_id">
+        insert into product(p_name,p_price,p_date) values(#{p_name},#{p_price},#{p_date})
+    </insert>
+    <update id="editProduct" parameterType="com.example.bean.Product">
+        UPDATE product SET p_name=#{p_name},p_price=#{p_price},p_date=#{p_date} WHERE p_id=#{p_id}
+    </update>
+    <delete id="deleteProduct">
+        delete from product where p_id = #{p_id}
+    </delete>
+</mapper>
