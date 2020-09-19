@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<form th:align="center" th:action="@{/user/login}" method="post">
+    <h1 align="center" title="小姐姐">黑崎大怪兽</h1>
+    <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+    <label th:text="#{index.username}">Username</label>
+    <input type="text" name="username" placeholder="Username" th:placeholder="#{index.username}">
+    <label th:text="#{index.password}">Password</label>
+    <input type="password" name="password" placeholder="Password" th:placeholder="#{index.password}">
+    </br> </br>
+    <div>
+        <label>
+            <input type="checkbox" value="remember-me"/> [[#{index.remember}]]
+        </label>
+    </div>
+    </br>
+    <button type="submit" th:text="#{index.sign}">Sign in</button>
+    </br></br>
+    <a th:href="@{/login.html(lang='zh_CN')}">中文</a>
+    <a th:href="@{/login.html(lang='en_US')}">English</a>
+</form>
+</body>
+</html>
