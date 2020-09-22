@@ -96,7 +96,7 @@ public class ProductController {
     }
 
     //实现修改功能
-    @PutMapping("/product/edits")
+    @PutMapping("/product/edit")
     public String editProduct(Product product) {
         productService.editProduct(product);
         return "redirect:/products";

@@ -42,17 +42,17 @@
         <div th:replace="commons/bar::sidebar"></div>
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 
-            <form th:action="@{/products}" method="get">
+            <form th:action="@{/orders}" method="get">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
                     <h1 class="h2">商品列表</h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group mr-2">
                             <button type="submit" class="btn btn-sm btn-outline-secondary">
                                 <!--get/post提交href可实现-->
-                                <a href="/product/ins" th:href="@{/product/ins}">新增</a>
+                                <a href="/product/ins" th:href="@{/order/add}">新增</a>
                             </button>
                             <button type="submit" class="btn btn-sm btn-outline-secondary">
-                                <a th:href="@{/products}">刷新</a>
+                                <a th:href="@{/orders}">刷新</a>
                             </button>
                         </div>
                     </div>
@@ -62,65 +62,29 @@
                         <thead>
                         <tr>
                             <th width="10%">#</th>
-                            <th width="25%">商品名</th>
-                            <th width="25%">商品价格</th>
-                            <th width="25%">商品日期</th>
+                            <th width="25%">订单名</th>
+                            <th width="25%">订单日期</th>
                             <th width="15%">商品修改</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="product:${products}">
-                            <td th:text="${product.p_id}"></td>
-                            <td th:text="${product.p_name}"></td>
-                            <td th:text="${product.p_price}"></td>
-                            <td th:text="${product.p_date}"></td>
+                        <tr th:each="orderModel:${orderList}">
+                            <td th:text="${orderModel.o_id}"></td>
+                            <td th:text="${orderModel.o_name}"></td>
+                            <td th:text="${orderModel.o_date}"></td>
                             <td>
-                                <a class="btn btn-sm btn-primary" th:href="@{/product/}+${product.p_id}">资料</a>
-                                <a class="btn btn-sm btn-primary" th:href="@{/product/edit/}+${product.p_id}">编辑</a>
-                                <button th:attr="del_uri=@{/product/del/}+${product.p_id}"
+                                <a class="btn btn-sm btn-primary" th:href="@{/order/}+${orderModel.o_id}">资料</a>
+                                <a class="btn btn-sm btn-primary" th:href="@{/order/edit/}+${orderModel.o_id}">编辑</a>
+                                <button th:attr="del_uri=@{/order/del/}+${orderModel.o_id}"
                                         class="btn btn-sm btn-danger deleteBtn">删除</button>
                             </td>
                         </tr>
                         </tbody>
-                    </table> <!--显示分页信息-->
-                    <div class="modal-footer no-margin-top">
-                        <!--<div class="col-md-6">
-                          当前第 [[${pageInfo.pageNum}]] 页,共 [[${pageInfo.pages}]] 页.一共 [[${pageInfo.total}]] 条记录
-                        </div>-->
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item" th:if="${pageInfo.hasPreviousPage}">
-                                <a class="page-link" th:href="'/products?pageNum=1'">首页</a>
-                            </li>
-
-                            <li class="prev" th:if="${pageInfo.hasPreviousPage}">
-                                <a th:href="'/products?pageNum='+${pageInfo.prePage}">
-                                    <i class="ace-icon fa fa-angle-double-left"></i>
-                                </a>
-                            </li>
-
-                            <!--遍历条数-->
-                            <li class="page-item" th:each="nav:${pageInfo.navigatepageNums}">
-                                <a class="page-link" th:href="'/products?pageNum='+${nav}" th:text="${nav}"
-                                   th:if="${nav != pageInfo.pageNum}"></a>
-                                <span class="page-link" style="background: #6faed9;" th:if="${nav == pageInfo.pageNum}"
-                                      th:text="${nav}"></span>
-                            </li>
-
-                            <li class="next" th:if="${pageInfo.hasNextPage}">
-                                <a th:href="'/products?pageNum='+${pageInfo.nextPage}">
-                                    <i class="ace-icon fa fa-angle-double-right"></i>
-                                </a>
-                            </li>
-
-                            <li class="page-item">
-                                <a class="page-link" th:href="'/products?pageNum='+${pageInfo.pages}">尾页</a>
-                            </li>
-                        </ul>
-                    </div>
+                    </table>
                 </div>
             </form>
         </main>
-        <form id="deleteProductForm" method="post">
+        <form id="deleteForm" method="post">
             <input type="hidden" name="_method" value="delete"/>
         </form>
     </div>
@@ -140,7 +104,7 @@
 <script>
     $(".deleteBtn").click(function () {
         //删除当前员工的
-        $("#deleteProductForm").attr("action", $(this).attr("del_uri")).submit();
+        $("#deleteForm").attr("action", $(this).attr("del_uri")).submit();
         return false;
     });
 </script>

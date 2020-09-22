@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.OrderMapper">
+    <select id="getOrderById" resultType="com.example.bean.Order">
+        select * from `order` where o_id=#{o_id}
+    </select>
+    <select id="getAllOrders" resultType="com.example.bean.Order">
+        select * from `order`
+    </select>
+    <insert id="addOrder" keyProperty="o_id">
+        insert into `order`(o_name,o_date,o_images)  values (#{o_name},#{o_date},#{o_images})
+    </insert>
+    <delete id="deleteOrder">
+        delete from `order` where o_id=#{o_id}
+    </delete>
+    <update id="editOrder" parameterType="com.example.bean.Order">
+        update `order` set o_name=#{o_name},o_date=#{o_date},o_images=#{o_images} where o_id=#{o_id}
+    </update>
+
+</mapper>
