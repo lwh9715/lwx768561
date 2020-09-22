@@ -31,6 +31,7 @@
     <link th:href="@{/css/signin.css}" rel="stylesheet">
 </head>
 <body class="text-center">
+    <!--${name}获取controller类中的name变量的信息并输出-->
 <form class="form-signin" th:action="@{/index/sign}" method="post">
     <img class="mb-4" th:src="@{/brand/bootstrap-solid.svg}" alt="" width="72" height="72">
     <h1 class="h3 mb-3 font-weight-normal" th:text="#{login.tip}">Please sign in</h1>
