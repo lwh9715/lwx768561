@@ -11,19 +11,19 @@ import java.util.List;
 @Repository
 public interface UserMapper {
     //根据用户id查询用户信息
-    public User getUserById(Integer id);
+    User getUserById(Integer id);
 
     //查询所有用户信息
-    public List<User> getUserAll();
+    List<User> getUserAll();
 
     //增加一条用户信息
-    public void insertUser(User user);
+    void insertUser(User user);
 
     //根据用户id删除一条用户信息
-    public void deleteUser(Integer id);
+    void deleteUser(Integer id);
 
     //根据用户id修改用户信息
-    public void updateUser(User user);
+    void updateUser(User user);
 
 
 }

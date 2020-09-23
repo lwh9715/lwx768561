@@ -68,14 +68,14 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="orderModel:${orderList}">
-                            <td th:text="${orderModel.o_id}"></td>
-                            <td th:text="${orderModel.o_name}"></td>
-                            <td th:text="${orderModel.o_date}"></td>
+                        <tr th:each="order:${orders}">
+                            <td th:text="${order.o_id}"></td>
+                            <td th:text="${order.o_name}"></td>
+                            <td th:text="${order.o_date}"></td>
                             <td>
-                                <a class="btn btn-sm btn-primary" th:href="@{/order/}+${orderModel.o_id}">资料</a>
-                                <a class="btn btn-sm btn-primary" th:href="@{/order/edit/}+${orderModel.o_id}">编辑</a>
-                                <button th:attr="del_uri=@{/order/del/}+${orderModel.o_id}"
+                                <a class="btn btn-sm btn-primary" th:href="@{/order/}+${order.o_id}">资料</a>
+                                <a class="btn btn-sm btn-primary" th:href="@{/order/edit/}+${order.o_id}">编辑</a>
+                                <button th:attr="del_uri=@{/order/del/}+${order.o_id}"
                                         class="btn btn-sm btn-danger deleteBtn">删除</button>
                             </td>
                         </tr>
@@ -87,31 +87,31 @@
                         </div>-->
                         <ul class="pagination justify-content-center">
                             <li class="page-item" th:if="${pageInfo.hasPreviousPage}">
-                                <a class="page-link" th:href="'/orderModel?pageNum=1'">首页</a>
+                                <a class="page-link" th:href="'/orders?pageNum=1'">首页</a>
                             </li>
 
                             <li class="prev" th:if="${pageInfo.hasPreviousPage}">
-                                <a th:href="'/orderModel?pageNum='+${pageInfo.prePage}">
+                                <a th:href="'/orders?pageNum='+${pageInfo.prePage}">
                                     <i class="ace-icon fa fa-angle-double-left"></i>
                                 </a>
                             </li>
 
                             <!--遍历条数-->
                             <li class="page-item" th:each="nav:${pageInfo.navigatepageNums}">
-                                <a class="page-link" th:href="'/orderModel?pageNum='+${nav}" th:text="${nav}"
+                                <a class="page-link" th:href="'/orders?pageNum='+${nav}" th:text="${nav}"
                                    th:if="${nav != pageInfo.pageNum}"></a>
                                 <span class="page-link" style="background: #6faed9;" th:if="${nav == pageInfo.pageNum}"
                                       th:text="${nav}"></span>
                             </li>
 
                             <li class="next" th:if="${pageInfo.hasNextPage}">
-                                <a th:href="'/orderModel?pageNum='+${pageInfo.nextPage}">
+                                <a th:href="'/orders?pageNum='+${pageInfo.nextPage}">
                                     <i class="ace-icon fa fa-angle-double-right"></i>
                                 </a>
                             </li>
 
                             <li class="page-item">
-                                <a class="page-link" th:href="'/orderModel?pageNum='+${pageInfo.pages}">尾页</a>
+                                <a class="page-link" th:href="'/orders?pageNum='+${pageInfo.pages}">尾页</a>
                             </li>
                         </ul>
                     </div>

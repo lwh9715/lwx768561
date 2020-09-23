@@ -14,7 +14,7 @@ public class OrderServiceImpl implements OrderService {
     OrderMapper orderMapper;
 
     @Override
-    public String getOrderById(Integer id) {
+    public Order getOrderById(Integer id) {
         return orderMapper.getOrderById(id);
     }
 
@@ -24,17 +24,17 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public String addOrder(Order order) {
-        return orderMapper.addOrder(order);
+    public void addOrder(Order order) {
+        orderMapper.addOrder(order);
     }
 
     @Override
-    public String deleteOrder(Integer id) {
-        return orderMapper.deleteOrder(id);
+    public void deleteOrder(Integer id) {
+        orderMapper.deleteOrder(id);
     }
 
     @Override
-    public String editOrder(Order order) {
-        return orderMapper.editOrder(order);
+    public void editOrder(Order order) {
+        orderMapper.editOrder(order);
     }
 }

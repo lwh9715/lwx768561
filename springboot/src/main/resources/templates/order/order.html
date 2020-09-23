@@ -44,12 +44,12 @@
 
             <form th:action="@{/orders}" method="get">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
-                    <h1 class="h2">商品列表</h1>
+                    <h1 class="h2">订单列表</h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group mr-2">
                             <button type="submit" class="btn btn-sm btn-outline-secondary">
                                 <!--get/post提交href可实现-->
-                                <a href="/product/ins" th:href="@{/order/add}">新增</a>
+                                <a href="/order/add" th:href="@{/order/add}">新增</a>
                             </button>
                             <button type="submit" class="btn btn-sm btn-outline-secondary">
                                 <a th:href="@{/orders}">刷新</a>
@@ -68,14 +68,13 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="orderModel:${orderList}">
-                            <td th:text="${orderModel.o_id}"></td>
-                            <td th:text="${orderModel.o_name}"></td>
-                            <td th:text="${orderModel.o_date}"></td>
+                        <tr th:each="order:${order}">
+                            <td th:text="${order.o_id}"></td>
+                            <td th:text="${order.o_name}"></td>
+                            <td th:text="${order.o_date}"></td>
                             <td>
-                                <a class="btn btn-sm btn-primary" th:href="@{/order/}+${orderModel.o_id}">资料</a>
-                                <a class="btn btn-sm btn-primary" th:href="@{/order/edit/}+${orderModel.o_id}">编辑</a>
-                                <button th:attr="del_uri=@{/order/del/}+${orderModel.o_id}"
+                                <a class="btn btn-sm btn-primary" th:href="@{/order/edit/}+${order.o_id}">编辑</a>
+                                <button th:attr="del_uri=@{/order/del/}+${order.o_id}"
                                         class="btn btn-sm btn-danger deleteBtn">删除</button>
                             </td>
                         </tr>

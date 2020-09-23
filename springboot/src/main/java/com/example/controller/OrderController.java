@@ -19,8 +19,10 @@ public class OrderController {
 
 
     @GetMapping("/order/{id}")
-    public String getOrderById(@PathVariable("id") Integer id){
-        return null;
+    public String getOrderById(@PathVariable("id") Integer id,Model model){
+        Order order = orderService.getOrderById(id);
+        model.addAttribute("order",order);
+        return "order/order";
     }
 
     //查询所有订单返回列表页面
@@ -42,13 +44,13 @@ public class OrderController {
         PageHelper.startPage(pageNum, pageSize);
         //2.紧跟的查询就是一个分页查询-必须紧跟,后面的其他查询不会被分页,除非再次调用PageHelper.startPage
         try {
-            List<Order> orderList = orderService.getAllOrders();
+            List<Order> orders = orderService.getAllOrders();
             // 3.使用PageInfo包装查询后的结果,5是连续显示的条数,结果list类型是Page<E>
-            PageInfo<Order> pageInfo = new PageInfo<>(orderList, pageSize);
+            PageInfo<Order> pageInfo = new PageInfo<>(orders, pageSize);
             //4.使用model/map/modelAndView等带回前端
             model.addAttribute("pageInfo", pageInfo);
             //放在请求域中
-            model.addAttribute("orderList", orderList);
+            model.addAttribute("orders", orders);
         } finally {
             PageHelper.clearPage(); //清理 ThreadLocal 存储的分页参数,保证线程安全
         }
@@ -76,14 +78,14 @@ public class OrderController {
     //来到商品修改页面，查出当前商品,页面回显
     @GetMapping("/order/edit/{id}")
     public String toEditOrder(@PathVariable("id") Integer id,Model model){
-        String orderById = orderService.getOrderById(id);
-        model.addAttribute("editOrder",orderById);
+        Order order = orderService.getOrderById(id);
+        model.addAttribute("orderEdit",order);
         //回到修改页面
         return "order/edit";
     }
 
     //实现修改功能
-    @PostMapping("/order/edit")
+    @PutMapping("/order/edits")
     public String editOrders(Order order){
         orderService.editOrder(order);
         return "redirect:/orders";

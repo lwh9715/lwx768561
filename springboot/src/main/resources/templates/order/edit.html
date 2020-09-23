@@ -41,7 +41,7 @@
         <div th:replace="commons/bar::sidebar"></div>
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 
-            <form th:action="@{/order/edit}" method="post">
+            <form th:action="@{/order/edits}" method="post">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
                     <h1 class="h2">修改页面</h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
@@ -53,21 +53,21 @@
                         </div>
                     </div>
                 </div>
-                <div class="table-responsive" th:each="edit:${editOrder}">
+                <div class="table-responsive" th:each="edit:${orderEdit}">
                     <!--这两行的name要跟实体类对应,不然查询数据库数据匹配错误-->
-                    <input type="hidden" name="_method" value="put" th:if="${edit != null}"/>
-                    <input type="hidden" name="o_id" th:if="${edit != null}" th:value="${edit.o_id}">
+                    <input type="hidden" name="_method" value="put" th:if="${orderEdit != null}"/>
+                    <input type="hidden" name="o_id" th:if="${orderEdit != null}" th:value="${orderEdit.o_id}">
                     <div class="form-group">
                         <label>订单名称</label>
-                        <input name="p_name" type="text" class="form-control" th:placeholder="${edit.o_name}">
+                        <input name="o_name" type="text" class="form-control" th:placeholder="${edit.o_name}">
                     </div>
                     <div class="form-group">
                         <label>订单图片</label>
-                        <input name="p_price" type="text" class="form-control" th:placeholder="${edit.o_images}">
+                        <input name="o_images" type="text" class="form-control" th:placeholder="${edit.o_images}">
                     </div>
                     <div class="form-group">
                         <label>订单日期</label>
-                        <input name="p_date" type="text" class="form-control" th:placeholder="${edit.o_date}">
+                        <input name="o_date" type="text" class="form-control" th:placeholder="${edit.o_date}">
                     </div>
                 </div>
             </form>
