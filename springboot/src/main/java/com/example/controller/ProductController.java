@@ -71,7 +71,7 @@ public class ProductController {
     //来到商品添加页面
     @GetMapping(value = "/product/ins")
     public String toAddProduct() {
-        return "product/add";
+        return "product/product_add";
     }
 
     /**
@@ -92,7 +92,7 @@ public class ProductController {
         Product products = productService.getProductById(id);
         model.addAttribute("editProduct", products);
         //回到修改页面
-        return "product/edit";
+        return "product/product_edit";
     }
 
     //实现修改功能

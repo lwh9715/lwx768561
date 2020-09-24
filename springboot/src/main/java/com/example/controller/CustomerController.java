@@ -73,10 +73,10 @@ public class CustomerController {
     }
 
     //来到添加页面
-    @GetMapping("/ins")
+    @GetMapping("/customer/ins")
     public String toInsertCustomer() {
         //来到添加页面
-        return "customer/add";
+        return "customer/customer_add";
     }
 
 
@@ -86,23 +86,23 @@ public class CustomerController {
      * 2、把结果缓存
      */
     //添加
-    @PostMapping("/ins")
+    @PostMapping("/customer/ins")
     public String insertUser(Customer customer) {
         customerService.insertCustomer(customer);
         return "redirect:/customers";
     }
 
     //来到修改页面,查出当前用户,页面回显
-    @GetMapping("/update/{id}")
+    @GetMapping("/customer/update/{id}")
     public String toUpdateCustomer(@PathVariable("id") Integer id, Model model) {
         Customer customer = customerService.getCustomerById(id);
         model.addAttribute("update", customer);
         //回到修改页面
-        return "customer/upload";
+        return "customer/customer_edit";
     }
 
     //修改
-    @PutMapping("/update")
+    @PutMapping("/customer/update")
     public String updateCustomer(Customer customer) {
         customerService.updateCustomer(customer);
         return "redirect:/customers";
@@ -115,7 +115,7 @@ public class CustomerController {
      * 默认是在方法之后执行
      */
     @CacheEvict(value = "#user", key = "#id", beforeInvocation = true)
-    @DeleteMapping("/del/{id}")
+    @DeleteMapping("customer/del/{id}")
     public String deleteCustomer(@PathVariable("id") Integer id) {
         customerService.deleteCustomer(id);
         return "redirect:/customers";

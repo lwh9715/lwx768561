@@ -47,7 +47,7 @@
                         <div class="btn-group mr-2">
                             <button type="submit" class="btn btn-sm btn-outline-secondary">
                                 <!--get/post提交href可实现-->
-                                <a href="/ins" th:href="@{/ins}">新增</a>
+                                <a href="/customer/ins" th:href="@{/customer/ins}">新增</a>
                             </button>
                             <button type="submit" class="btn btn-sm btn-outline-secondary">
                                 <a th:href="@{/customers}">刷新</a>
@@ -71,8 +71,8 @@
                             <td th:text="${lists.name}"></td>
                             <td th:text="${lists.password}"></td>
                             <td>
-                                <a class="btn btn-sm btn-primary" th:href="@{/update/}+${list.id}">编辑</a>
-                                <button th:attr="del_uri=@{/del/}+${list.id}" class="btn btn-sm btn-danger deleteBtn">
+                                <a class="btn btn-sm btn-primary" th:href="@{/customer/update/}+${list.id}">编辑</a>
+                                <button th:attr="del_uri=@{/customer/del/}+${list.id}" class="btn btn-sm btn-danger deleteBtn">
                                     删除
                                 </button>
                             </td>

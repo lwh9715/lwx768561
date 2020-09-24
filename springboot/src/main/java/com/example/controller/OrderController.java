@@ -59,7 +59,7 @@ public class OrderController {
     //来到商品添加页面
     @GetMapping("/order/add")
     public String toAddOrder(){
-        return "order/add";
+        return "order/order_add";
     }
     //实现添加功能
     @PostMapping("/order/add")
@@ -81,7 +81,7 @@ public class OrderController {
         Order order = orderService.getOrderById(id);
         model.addAttribute("orderEdit",order);
         //回到修改页面
-        return "order/edit";
+        return "order/order_edit";
     }
 
     //实现修改功能
