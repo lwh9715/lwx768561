@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.CustomerMapper">
+    <select id="getCustomerById" resultType="com.example.bean.Customer">
+        select * from customer where id = #{id}
+    </select>
+    <select id="getCustomerAll" resultType="com.example.bean.Customer">
+        select * from customer
+    </select>
+    <insert id="insertCustomer" useGeneratedKeys="true" keyProperty="id">
+        insert into customer(name,password) values(#{name},#{password})
+    </insert>
+    <delete id="deleteCustomer">
+        delete from customer where id = #{id}
+    </delete>
+    <update id="updateCustomer" parameterType="com.example.bean.Customer">
+        update customer set name = #{name}, password = #{password} where id=#{id}
+    </update>
+</mapper>
