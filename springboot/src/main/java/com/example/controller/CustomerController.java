@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -84,10 +85,11 @@ public class CustomerController {
      * @CachePut 更新并刷新缓存
      * 1、先调用目标方法
      * 2、把结果缓存
-     */
-    //添加
+     *@Valid 表单校验效果，在bean实体类中添加相关的注解
+     **/
+     //添加
     @PostMapping("/customer/ins")
-    public String insertUser(Customer customer) {
+    public String insertUser(@Valid Customer customer) {
         customerService.insertCustomer(customer);
         return "redirect:/customers";
     }

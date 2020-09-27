@@ -1,33 +1,24 @@
 package com.example.bean;
 
+import lombok.Data;
+
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
+@Data
 public class Customer implements Serializable {
+
     private Integer id;
+    @NotEmpty(message = "密码不能为空")
     private String name;
     private String password;
 
-    public Integer getId() {
-        return id;
+    public Customer() {
     }
 
-    public void setId(Integer id) {
+    public Customer(Integer id, String name, String password) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
         this.name = name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
         this.password = password;
     }
 }
