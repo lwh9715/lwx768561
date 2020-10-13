@@ -17,5 +17,5 @@ public interface LogMapper {
     //删除一条log信息
     public void delLog(Integer id);
     //删除所有log信息
-    void delAllLogs();
+    public void delAllLogs();
 }
