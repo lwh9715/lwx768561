@@ -2,6 +2,7 @@ package com.example.mapper;
 
 
 import com.example.bean.Customer;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 //mapper或者mapperScan将接口扫描装配到容器中
 @Repository
 public interface CustomerMapper {
+
     //根据用户id查询用户信息
     Customer getCustomerById(Integer id);
 

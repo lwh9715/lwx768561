@@ -1,11 +1,13 @@
 package com.example.service;
 
 import com.example.bean.Customer;
+import org.apache.ibatis.annotations.Param;
 
 
 import java.util.List;
 
 public interface CustomerService {
+
 
     //根据用户id查询用户信息
     Customer getCustomerById(Integer id);

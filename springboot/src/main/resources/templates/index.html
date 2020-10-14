@@ -36,8 +36,8 @@
     <img class="mb-4" th:src="@{/brand/bootstrap-solid.svg}" alt="" width="72" height="72">
     <h1 class="h3 mb-3 font-weight-normal" th:text="#{login.tip}">Please sign in</h1>
     <div align="center"><p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p></div>
-    <label for="inputEmail" class="sr-only" th:text="#{login.username}">Email address</label>
-    <input name="username" type="text" id="inputEmail" class="form-control" th:placeholder="#{login.username}" required
+    <label for="inputUsername" class="sr-only" th:text="#{login.username}">Username</label>
+    <input name="username" type="text" id="inputUsername" class="form-control" th:placeholder="#{login.username}" required
            autofocus>
     <label for="inputPassword" class="sr-only" th:text="#{login.password}">Password</label>
     <input name="password" type="password" id="inputPassword" class="form-control" th:placeholder="#{login.password}"

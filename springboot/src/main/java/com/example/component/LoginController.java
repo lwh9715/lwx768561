@@ -1,9 +1,11 @@
 package com.example.component;
 
+import com.example.bean.Admin;
+import com.example.service.AdminService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.Map;
@@ -11,13 +13,18 @@ import java.util.Map;
 @Controller
 public class LoginController {
 
+    @Autowired
+    AdminService adminService;
+
     @PostMapping(value = "/index/sign")
-    public String login(@RequestParam("username") String username,
-                        @RequestParam("password") String password,
-                        Map<String, Object> map, HttpSession httpSession) {
-        if (!StringUtils.isEmpty(username) && "123".equals(password)) {
+    public String login(Admin admin,Map<String, Object> map, HttpSession httpSession) {
+
+        Admin login = adminService.login(admin.getUsername(), admin.getPassword());
+
+        /*if (!StringUtils.isEmpty(username) && "123".equals(password)) {*/
+        if (!StringUtils.isEmpty(login)) {
             //登陆成功，防止表单重复提交，可以重定向到主页,LoginHandlerInterceptor
-            httpSession.setAttribute("SignIn", username);
+            httpSession.setAttribute("SignIn", login.getUsername());
             return "redirect:/customers";
         } else {
             //登录失败

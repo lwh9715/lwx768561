@@ -68,7 +68,7 @@
                         <tbody>
                         <tr th:each="lists : ${list}">
                             <td th:text="${lists.id}"></td>
-                            <td th:text="${lists.name}"></td>
+                            <td th:text="${lists.username}"></td>
                             <td th:text="${lists.password}"></td>
                             <td>
                                 <a class="btn btn-sm btn-primary" th:href="@{/customer/update/}+${list.id}">编辑</a>
