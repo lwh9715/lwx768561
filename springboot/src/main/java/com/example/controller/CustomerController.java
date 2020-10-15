@@ -74,7 +74,7 @@ public class CustomerController {
     }
 
     //来到添加页面
-    @GetMapping("/customer/ins")
+    @GetMapping("/customer/toIns")
     public String toInsertCustomer() {
         //来到添加页面
         return "customer/customer_add";
@@ -95,7 +95,7 @@ public class CustomerController {
     }
 
     //来到修改页面,查出当前用户,页面回显
-    @GetMapping("/customer/update/{id}")
+    @GetMapping("/customer/toUpdate/{id}")
     public String toUpdateCustomer(@PathVariable("id") Integer id, Model model) {
         Customer customer = customerService.getCustomerById(id);
         model.addAttribute("update", customer);

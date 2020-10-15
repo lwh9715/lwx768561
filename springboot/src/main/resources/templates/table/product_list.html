@@ -49,7 +49,7 @@
                         <div class="btn-group mr-2">
                             <button type="submit" class="btn btn-sm btn-outline-secondary">
                                 <!--get/post提交href可实现-->
-                                <a href="/product/ins" th:href="@{/product/ins}">新增</a>
+                                <a href="/product/toIns" th:href="@{/product/toIns}">新增</a>
                             </button>
                             <button type="submit" class="btn btn-sm btn-outline-secondary">
                                 <a th:href="@{/products}">刷新</a>
@@ -76,7 +76,7 @@
                             <td th:text="${product.p_date}"></td>
                             <td>
                                 <a class="btn btn-sm btn-primary" th:href="@{/product/}+${product.p_id}">资料</a>
-                                <a class="btn btn-sm btn-primary" th:href="@{/product/edit/}+${product.p_id}">编辑</a>
+                                <a class="btn btn-sm btn-primary" th:href="@{/product/toEdit/}+${product.p_id}">编辑</a>
                                 <button th:attr="del_uri=@{/product/del/}+${product.p_id}"
                                         class="btn btn-sm btn-danger deleteBtn">删除</button>
                             </td>

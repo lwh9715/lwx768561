@@ -47,7 +47,7 @@
                         <div class="btn-group mr-2">
                             <button type="submit" class="btn btn-sm btn-outline-secondary">
                                 <!--get/post提交href可实现-->
-                                <a       th:href="@{/log/add}">新增</a>
+                                <a       th:href="@{/log/toAdd}">新增</a>
                             </button>
                             <button type="submit" class="btn btn-sm btn-outline-secondary">
                                 <a th:href="@{/logs}">刷新</a>
@@ -72,7 +72,7 @@
                             <td th:text="${list.date}"></td>
                             <td>
                                 <a class="btn btn-sm btn-primary" th:href="@{/log/}+${list.id}">资料</a>
-                                <a class="btn btn-sm btn-primary" th:href="@{/log/edit/}+${list.id}">编辑</a>
+                                <a class="btn btn-sm btn-primary" th:href="@{/log/toEdit/}+${list.id}">编辑</a>
                                 <button th:attr="del_uri=@{/log/del/}+${list.id}" class="btn btn-sm btn-danger deleteBtn">
                                     删除
                                 </button>

@@ -57,7 +57,7 @@ public class OrderController {
         return "table/order_list";
     }
     //来到商品添加页面
-    @GetMapping("/order/add")
+    @GetMapping("/order/toAdd")
     public String toAddOrder(){
         return "order/order_add";
     }
@@ -76,7 +76,7 @@ public class OrderController {
     }
 
     //来到商品修改页面，查出当前商品,页面回显
-    @GetMapping("/order/edit/{id}")
+    @GetMapping("/order/toEdit/{id}")
     public String toEditOrder(@PathVariable("id") Integer id,Model model){
         Order order = orderService.getOrderById(id);
         model.addAttribute("orderEdit",order);

@@ -58,7 +58,7 @@ public class LogController {
         return "table/logs_list";
     }
     //来到添加log界面
-    @GetMapping("/log/add")
+    @GetMapping("/log/toAdd")
     public String toAddLog(){
         return "log/log_add";
     }
@@ -70,7 +70,7 @@ public class LogController {
     }
 
     //来到编辑log界面,查出当前商品,页面回显
-    @GetMapping("/log/edit/{id}")
+    @GetMapping("/log/toEdit/{id}")
     public String toEditLog(@PathVariable("id") Integer  id,Model model){
         Log editLog = logService.getLogById(id);
         model.addAttribute("editLog",editLog);

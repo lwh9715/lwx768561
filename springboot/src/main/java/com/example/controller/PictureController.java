@@ -57,7 +57,7 @@ public class PictureController {
             return "table/picture_list";
     }
     //来到添加图片页面
-    @GetMapping("/picture/add")
+    @GetMapping("/picture/toAdd")
     public String toAddPicture(){
         return "picture/picture_add";
     }
@@ -68,7 +68,7 @@ public class PictureController {
         return "redirect:/pictures";
     }
     //来到修改图片页面
-    @GetMapping("/picture/edit/{id}")
+    @GetMapping("/picture/toEdit/{id}")
     public String toEditPicture(@PathVariable("id") Integer id,Model model){
         Picture editPicture = pictureService.getPictureById(id);
         model.addAttribute("editPicture",editPicture);

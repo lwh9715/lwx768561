@@ -47,7 +47,7 @@
                         <div class="btn-group mr-2">
                             <button type="submit" class="btn btn-sm btn-outline-secondary">
                                 <!--get/post提交href可实现-->
-                                <a href="/picture/add" th:href="@{/picture/add}">新增</a>
+                                <a href="/picture/toAdd" th:href="@{/picture/toAdd}">新增</a>
                             </button>
                             <button type="submit" class="btn btn-sm btn-outline-secondary">
                                 <a th:href="@{/pictures}">刷新</a>
@@ -72,7 +72,7 @@
                             <td th:text="${list.picture_images}"></td>
                             <td>
                                 <a class="btn btn-sm btn-primary" th:href="@{/picture/}+${list.id}">资料</a>
-                                <a class="btn btn-sm btn-primary" th:href="@{/picture/edit/}+${list.id}">编辑</a>
+                                <a class="btn btn-sm btn-primary" th:href="@{/picture/toEdit/}+${list.id}">编辑</a>
                                 <button th:attr="del_uri=@{/picture/del/}+${list.id}" class="btn btn-sm btn-danger deleteBtn">
                                     删除
                                 </button>
