@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.0.1">
+    <title>水果</title>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/dashboard.css}" rel="stylesheet">
+</head>
+<body>
+<!--引入抽取的topbar-->
+<!--模板名：会使用thymeleaf的前后缀配置规则进行解析-->
+<div th:replace="commons/bar::topbar"></div>
+<div class="container-fluid">
+    <div class="row">
+        <!--引入侧边栏-->
+        <div th:replace="commons/bar::sidebar"></div>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+
+            <form th:action="@{/kungfu}" method="get">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+                    <h1 class="h2">武林秘籍管理系统</h1>
+                </div>
+                <div align="center" style="margin-top: 100px;color: firebrick">
+                    <p>武当长拳</p>
+                    <h3>您在本赛季段位为：<span style="color: aqua;font-style: italic">英勇黄铜</span></h3>
+                    <h4>获得皮肤奖励：<span style="color: peru">锈迹斑斑 布里茨</span></h4>
+                    <a th:href="@{/kungfu}"><button type="submit">返回</button></a>
+                </div>
+            </form>
+        </main>
+    </div>
+</div>
+
+
+<!-- Bootstrap core JavaScript -->
+<link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
+<script type="text/javascript" src="/js/jquery-3.2.1.slim.min.js" th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+<script type="text/javascript" src="/js/popper.min.js" th:src="@{/webjars/popper.js/1.16.0/dist/popper.js}"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/4.5.2/js/bootstrap.js}"></script>
+<!-- Icons -->
+<script type="text/javascript" src="/js/feather.min.js" th:src="@{/js/feather.min.js}"></script>
+<script>
+    feather.replace()
+</script>
+<script>
+    $(".deleteBtn").click(function () {
+        //删除当前员工的
+        $("#deleteCustomerForm").attr("action", $(this).attr("del_uri")).submit();
+        return false;
+    });
+</script>
+</body>
+</html>
