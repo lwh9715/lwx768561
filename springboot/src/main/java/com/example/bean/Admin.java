@@ -1,19 +1,18 @@
 package com.example.bean;
 
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+@NoArgsConstructor//注解在类上；为类提供一个无参的构造方法
+@AllArgsConstructor//注解在类上；为类提供一个全参的构造方法
 public class Admin {
 
     private Integer id;
     private String username;
-    private String  password;
-
-    public Admin() {
-    }
-
-    public Admin(Integer id, String username, String password) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-    }
+    private String password;
 
     public Integer getId() {
         return id;
