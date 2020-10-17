@@ -46,7 +46,6 @@ public class MvcConfig implements WebMvcConfigurer {
                         "/**/*.css", "/**/*.js", "/**/*.png", "/**/*.jpg",
                         "/**/*.jpeg", "/**/*.gif", "/**/fonts/*", "/**/*.svg");
     }
-
     //视图控制器(视图映射)
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {

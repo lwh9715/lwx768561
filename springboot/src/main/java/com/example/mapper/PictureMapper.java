@@ -16,4 +16,5 @@ public interface PictureMapper {
     public void editPicture(Picture picture);
     //删除图片
     public void deletePicture(Integer id);
+
 }

@@ -18,7 +18,6 @@ public class LogController {
     @Autowired
     LogService logService;
 
-
     //根据id获取单行信息
     @GetMapping("/log/{id}")
     public String getLogById(@PathVariable("id") Integer id, Model model){

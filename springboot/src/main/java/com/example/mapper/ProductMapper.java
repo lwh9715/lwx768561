@@ -20,5 +20,4 @@ public interface ProductMapper {
 
     //删除数据
     void deleteProduct(Integer id);
-
 }

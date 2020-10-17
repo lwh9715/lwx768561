@@ -38,4 +38,5 @@ public class Picture {
     public void setPicture_images(String picture_images) {
         this.picture_images = picture_images;
     }
+
 }

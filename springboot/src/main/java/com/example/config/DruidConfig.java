@@ -15,8 +15,8 @@ import javax.sql.DataSource;
 public class DruidConfig {
 
     //使application.yml文件spring.resource下面的属性配置生效
-    @ConfigurationProperties(prefix = "spring.datasource")
     @Bean
+    @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource druid() {
         return new DruidDataSource();
     }

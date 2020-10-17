@@ -55,7 +55,6 @@ public class RedisConfig extends CachingConfigurerSupport {
         return cacheManager;
     }
 
-
     /**
      * RedisTemplate配置
      */

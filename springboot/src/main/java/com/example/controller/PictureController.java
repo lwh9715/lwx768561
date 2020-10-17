@@ -1,6 +1,5 @@
 package com.example.controller;
 
-
 import com.example.bean.Picture;
 import com.example.service.PictureService;
 import com.github.pagehelper.PageHelper;

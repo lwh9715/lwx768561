@@ -19,21 +19,25 @@ public class ProductServiceImpl implements ProductService {
     public Product getProductById(Integer id) {
         return productMapper.getProductById(id);
     }
+
     //获取去所有数据
     @Override
     public List<Product> getProducts() {
         return productMapper.getProducts();
     }
+
     //新增数据
     @Override
     public void addProduct(Product product) {
         productMapper.addProduct(product);
     }
+
     //修改数据
     @Override
     public void editProduct(Product product) {
         productMapper.editProduct(product);
     }
+
     //删除数据
     @Override
     public void deleteProduct(Integer id) {

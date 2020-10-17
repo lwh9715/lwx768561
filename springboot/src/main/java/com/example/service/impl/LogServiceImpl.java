@@ -44,4 +44,5 @@ public class LogServiceImpl implements LogService {
     public void delAllLogs() {
         logMapper.delAllLogs();
     }
+
 }

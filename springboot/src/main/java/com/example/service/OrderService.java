@@ -16,5 +16,4 @@ public interface OrderService {
     void deleteOrder(Integer id);
     //更新一条order数据
     void editOrder(Order order);
-
 }

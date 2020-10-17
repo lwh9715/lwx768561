@@ -9,7 +9,6 @@ import org.springframework.cache.annotation.EnableCaching;
 @EnableCaching // 开启缓存支持
 @SpringBootApplication
 public class SpringbootApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(SpringbootApplication.class, args);
     }

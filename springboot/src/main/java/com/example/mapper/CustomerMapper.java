@@ -27,5 +27,4 @@ public interface CustomerMapper {
     //根据用户id修改用户信息
     void updateCustomer(Customer customer);
 
-
 }

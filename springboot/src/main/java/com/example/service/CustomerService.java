@@ -8,7 +8,6 @@ import java.util.List;
 
 public interface CustomerService {
 
-
     //根据用户id查询用户信息
     Customer getCustomerById(Integer id);
 

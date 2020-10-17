@@ -18,4 +18,5 @@ public interface LogService {
     public void delLog(Integer id);
     //删除所有log信息
     void delAllLogs();
+
 }

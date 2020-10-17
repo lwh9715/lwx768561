@@ -5,6 +5,7 @@ import com.example.bean.Product;
 import java.util.List;
 
 public interface ProductService {
+
     //根据id获取单条数据
     Product getProductById(Integer id);
 

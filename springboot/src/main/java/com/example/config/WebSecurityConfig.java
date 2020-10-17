@@ -104,7 +104,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //.failureForwardUrl("/login/failure")
         // .failureUrl("/login/failure")
 
-
         //启用注销功能，（需要提供一个action为/logout的form）并设置注销后访问的url，这里注销后跳转到首页
         //1,访问/logout表示用户注销，清空session
         //2,注销成功会返回 Login?Logout

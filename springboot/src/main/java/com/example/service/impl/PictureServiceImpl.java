@@ -13,6 +13,7 @@ public class PictureServiceImpl implements PictureService {
 
     @Autowired
     PictureMapper pictureMapper;
+
     //根据id查找图片
     @Override
     public Picture getPictureById(Integer id) {

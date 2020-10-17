@@ -20,7 +20,6 @@ public class KungfuController {
         return "kungfu/welcome";
     }
 
-
     @GetMapping("/level1/{path}")
     public String level_1(@PathVariable("path") String path){
         return PREFIX+"level1/"+path;

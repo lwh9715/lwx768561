@@ -17,7 +17,6 @@ public class OrderController {
     @Autowired
     OrderService orderService;
 
-
     @GetMapping("/order/{id}")
     public String getOrderById(@PathVariable("id") Integer id,Model model){
         Order order = orderService.getOrderById(id);

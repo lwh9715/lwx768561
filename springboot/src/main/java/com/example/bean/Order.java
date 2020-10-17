@@ -11,7 +11,6 @@ public class Order implements Serializable {
     private String o_date;
     private String o_images;
 
-
     public Order() {
     }
 

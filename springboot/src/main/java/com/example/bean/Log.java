@@ -9,8 +9,7 @@ public class Log {
     private String date;
     private String content;
 
-    public Log() {
-    }
+    public Log() {}
 
     public Log(Integer id, String title, String date, String content) {
         this.id = id;

@@ -72,6 +72,3 @@ mybatis:
     #开启驼峰命名法
     #configuration:
   #map-underscore-to-camel-case: true
-
-
-

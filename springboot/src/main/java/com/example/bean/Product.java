@@ -11,7 +11,6 @@ public class Product implements Serializable {
     private Double p_price;
     private String p_date;
 
-
     public Product() {
     }
 
