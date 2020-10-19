@@ -1,28 +1,18 @@
 package com.example.config;
 
-import com.example.service.AdminService;
 import com.example.service.impl.AdminServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
+import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 
 @EnableWebSecurity
 //开启SpringSecurity授权注解
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
-    @Autowired
-    AdminServiceImpl userDetailsService;
-    @Bean
-    public PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
-
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
     /**
      * 身份认证管理器 可指定认证方式
      * 指定userDetailsService、authenticationProvider
@@ -39,15 +29,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //Spring security 5.0中新增了多种加密方式,也改变了默认的密码格式.
         //inMemoryAuthentication表示使用基于内存的验证，还可以使用基于数据库的验证等，使用BCrypt编码对密码进行加密
         //指定密码加密方式
+
+        /**
+         * 在内存中创建一个名为 "user" 的用户，密码为 "pwd"，拥有 "USER" 权限，密码使用BCryptPasswordEncoder加密
+         */
         auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder())
-                .withUser("user1").password(new BCryptPasswordEncoder().encode("123")).roles("vip1")
-                .and()
-                .withUser("user2").password(new BCryptPasswordEncoder().encode("123")).roles("vip2")
-                .and()
-                .withUser("user3").password(new BCryptPasswordEncoder().encode("123")).roles("vip3")
-                .and()
-                .withUser("user").password(new BCryptPasswordEncoder().encode("123"))
-                .roles("vip1","vip2","vip3");
+                .withUser("user").password(new BCryptPasswordEncoder()
+                .encode("pwd")).roles("USER");
+        /**
+         * 在内存中创建一个名为 "admin" 的用户，密码为 "pwd"，拥有 "USER" 和"ADMIN"权限
+         */
+        auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder())
+                .withUser("admin").password(new BCryptPasswordEncoder()
+                .encode("pwd")).roles("USER", "ADMIN");
     }
 
     /**
@@ -59,8 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     //定制请求的授权规则,设置哪些url允许被某种角色访问
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
-        //定制请求的授权规则
+       //定制请求的授权规则
         //角色的设置需要和上面的权限一致，不然会报403
         // 需要具有ADMIN角色才能访问
         ////http.authorizeRequests().antMatchers("/admin").hasRole("ADMIN");
@@ -70,11 +63,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //不定向参数，匹配url规则
         //设置静态资源允许访问
         // 不需要登录就可以访问
-        http.authorizeRequests().antMatchers("/").permitAll()
+        http.csrf().disable()
+        .authorizeRequests().antMatchers("/").permitAll()
         //指定角色可访问
-        .antMatchers("/level1/**").hasRole("vip1")
-        .antMatchers("/level2/**").hasRole("vip2")
-        .antMatchers("/level3/**").hasRole("vip3");
+        .antMatchers("/level1/**").hasRole("USER")
+        .antMatchers("/level2/**").hasRole("USER")
+        .antMatchers("/level3/**").hasRole("ADMIN");
         //使用正则表达式进行匹配
         //.regexMatchers(".+[.]js").permitAll()
 

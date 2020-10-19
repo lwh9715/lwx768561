@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <hr>
-                <div sec:authorize="hasRole('vip1')">
+                <div sec:authorize="hasRole('USER')">
                     <h3>普通武功秘籍</h3>
                     <ul>
                         <li><a th:href="@{/level1/kungfu_01}">罗汉拳</a></li>
@@ -69,7 +69,7 @@
                         <li><a th:href="@{/level1/kungfu_03}">武林长拳</a></li>
                     </ul>
                 </div>
-                <div sec:authorize="hasRole('vip2')">
+                <div sec:authorize="hasRole('USER')">
                     <h3>高级武功秘籍</h3>
                     <ul>
                         <li><a th:href="@{/level2/kungfu_04}">太极拳</a></li>
@@ -77,7 +77,7 @@
                         <li><a th:href="@{/level2/kungfu_06}">梯云纵</a></li>
                     </ul>
                 </div>
-                <div sec:authorize="hasRole('vip3')">
+                <div sec:authorize="hasRole('ADMIN')">
                     <h3>绝世武功秘籍</h3>
                     <ul>
                         <li><a th:href="@{/level3/kungfu_07}">葵花宝典</a></li>

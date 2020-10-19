@@ -42,7 +42,7 @@ public class MvcConfig implements WebMvcConfigurer {
         //国际化这行很关键
         registry.addInterceptor(localeChangeInterceptor());
         registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").
-                excludePathPatterns("/", "/index.html", "/druid", "/index/sign", "/customer**",
+                excludePathPatterns("/", "/index", "/druid", "/login",
                         "/**/*.css", "/**/*.js", "/**/*.png", "/**/*.jpg",
                         "/**/*.jpeg", "/**/*.gif", "/**/fonts/*", "/**/*.svg");
     }
