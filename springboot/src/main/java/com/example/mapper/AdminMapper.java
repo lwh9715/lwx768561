@@ -2,8 +2,6 @@ package com.example.mapper;
 
 import com.example.bean.Admin;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 @Repository

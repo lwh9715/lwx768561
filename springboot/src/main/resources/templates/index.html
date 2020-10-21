@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.0.1">
-    <title>Welcome</title>
+    <title>个人平台</title>
 
     <!-- Bootstrap core CSS -->
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
@@ -28,26 +28,34 @@
         }
     </style>
     <!-- Custom styles for this template -->
-    <link th:href="@{/css/signin.css}" rel="stylesheet">
+    <link th:href="@{/css/dashboard.css}" rel="stylesheet">
 </head>
-<body class="text-center">
-    <!--${name}获取controller类中的name变量的信息并输出-->
-<form class="form-signin" th:action="@{/login}" method="post">
-    <img class="mb-4" th:src="@{/brand/bootstrap-solid.svg}" alt="" width="72" height="72">
-    <h1 class="h3 mb-3 font-weight-normal" th:text="#{login.tip}">Please sign in</h1>
-    <div align="center"><p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p></div>
-    <label for="inputUsername" class="sr-only" th:text="#{login.username}">Username</label>
-    <input name="username" type="text" id="inputUsername" class="form-control" th:placeholder="#{login.username}" required
-           autofocus>
-    <label for="inputPassword" class="sr-only" th:text="#{login.password}">Password</label>
-    <input name="password" type="password" id="inputPassword" class="form-control" th:placeholder="#{login.password}"
-           required></br>
-    <button class="btn btn-lg btn-primary btn-block" type="submit" th:text="#{login.submit}">Sign in</button>
-    <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
-    <p align="center">
-        <a th:href="@{/index.html(lang ='zh_CN')}">中文</a>&nbsp;
-        <a th:href="@{/index.html(lang ='en_US')}">English</a>
-    </p>
-</form>
+<body>
+<!--引入抽取的topbar-->
+<!--模板名：会使用thymeleaf的前后缀配置规则进行解析-->
+<div th:replace="commons/bar::topbar"></div>
+<div class="container-fluid">
+    <div class="row">
+        <!--引入侧边栏-->
+        <div th:replace="commons/bar::sidebar"></div>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+                <img th:src="@{../image/dishini.jpg}" width="1085px" height="550px">
+            </div>
+        </main>
+    </div>
+</div>
+
+
+<!-- Bootstrap core JavaScript -->
+<link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
+<script type="text/javascript" src="/js/jquery-3.2.1.slim.min.js" th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+<script type="text/javascript" src="/js/popper.min.js" th:src="@{/webjars/popper.js/1.16.0/dist/popper.js}"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/4.5.2/js/bootstrap.js}"></script>
+<!-- Icons -->
+<script type="text/javascript" src="/js/feather.min.js" th:src="@{/js/feather.min.js}"></script>
+<script>
+    feather.replace()
+</script>
 </body>
 </html>

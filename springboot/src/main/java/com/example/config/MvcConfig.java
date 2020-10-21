@@ -41,15 +41,16 @@ public class MvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         //国际化这行很关键
         registry.addInterceptor(localeChangeInterceptor());
-        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").
-                excludePathPatterns("/", "/index", "/druid", "/login",
-                        "/**/*.css", "/**/*.js", "/**/*.png", "/**/*.jpg",
-                        "/**/*.jpeg", "/**/*.gif", "/**/fonts/*", "/**/*.svg");
+
+        registry.addInterceptor(new LoginHandlerInterceptor()).excludePathPatterns ("/",
+                "/index","/druid","/login","/**/*.css","/**/*.js","/**/*.png","/**/*.jpg",
+                "/**/*.jpeg","/**/*.gif","/**/fonts/*","/**/*.svg");
     }
     //视图控制器(视图映射)
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("index");
-        registry.addViewController("/index").setViewName("index");
+        registry.addViewController("/").setViewName("login");
+        registry.addViewController("/login").setViewName("login");
+        registry.addViewController("/index").setViewName("login");
     }
 }
