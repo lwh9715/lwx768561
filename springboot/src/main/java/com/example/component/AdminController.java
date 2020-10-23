@@ -2,6 +2,7 @@ package com.example.component;
 
 import com.example.bean.Admin;
 import com.example.service.AdminService;
+import com.example.service.impl.AdminServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
@@ -16,17 +17,22 @@ import java.util.Map;
 public class AdminController {
 
     @Autowired
-    AdminService adminService;
+    AdminServiceImpl adminService;
 
-    @PostMapping("/login")
+    @GetMapping("/login_p")
+    public String login_p(){
+        return "login_p";
+    }
+
+    @PostMapping("/doLogin")
     public String login(Admin admin,Map<String, Object> map, HttpSession httpSession) {
 
-        Admin login = adminService.login(admin.getUsername(), admin.getPassword());
-
-        /*if (!StringUtils.isEmpty(username) && "123".equals(password)) {*/
+        Admin login = (Admin) adminService.loadUserByUsername(admin.getUsername());
+        //if (!StringUtils.isEmpty(username) && "123".equals(password))
         if (!StringUtils.isEmpty(login)) {
             //登陆成功，防止表单重复提交，可以重定向到主页,LoginHandlerInterceptor
             httpSession.setAttribute("SignIn", login.getUsername());
+            System.out.println("测试controller--login--1");
             return "index";
         } else {
             //登录失败
@@ -34,14 +40,4 @@ public class AdminController {
             return "login";
         }
     }
-    @RequestMapping("/index")
-    public String index(){
-        return "index";
-    }
-    @GetMapping("/logout")
-    public String logout(){
-        return "login";
-    }
-
-
 }

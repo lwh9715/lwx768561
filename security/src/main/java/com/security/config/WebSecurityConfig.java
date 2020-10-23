@@ -1,5 +1,7 @@
 package com.security.config;
 
+import com.security.service.MyUserDetailService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -9,6 +11,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    MyUserDetailService myUserDetailService;
     //拦截请求
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -16,12 +20,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //定制请求的授权规则
         //设置哪些url允许被某种角色访问
         http.authorizeRequests().antMatchers("/").permitAll()
+                .antMatchers("/levels").hasRole("vip")
                 .antMatchers("/level1/**").hasRole("vip1")
                 .antMatchers("/level2/**").hasRole("vip2")
                 .antMatchers("/level3/**").hasRole("vip3");
-        System.out.println("Access Denied");
+        System.out.println("判断是否先执行...");
         //开启自动配置的登录功能：效果：如果没有登陆，没有权限就会来到登陆页面
-        //1,/login来到登录页面
+        //1,/login来到登录页面(GET请求)
         //2,/重定向到/login?error表示登录失败
         http.formLogin().loginPage("/login");
 
@@ -44,12 +49,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //Spring security 5.0中新增了多种加密方式,也改变了默认的密码格式.
         //inMemoryAuthentication表示使用基于内存的验证，还可以使用基于数据库的验证等，使用BCrypt编码对密码进行加密
         auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder())
-                .withUser("zhangsan").password(new BCryptPasswordEncoder().encode("123")).roles("vip1")
+                .withUser("user").password(new BCryptPasswordEncoder()
+                .encode("123")).roles("vip1")
                 .and()
-                .withUser("lisi").password(new BCryptPasswordEncoder().encode("123")).roles("vip2")
+                .withUser("admin").password(new BCryptPasswordEncoder()
+                .encode("123")).roles("vip1","vip2","vip3")
                 .and()
-                .withUser("wangwu").password(new BCryptPasswordEncoder().encode("123")).roles("vip3")
-                .and()
-                .withUser("zhaoliu").password(new BCryptPasswordEncoder().encode("123")).roles("vip1","vip2","vip3");
+                .withUser("relax").password(new BCryptPasswordEncoder()
+                .encode("123")).roles("vip");
+        auth.userDetailsService(myUserDetailService).passwordEncoder(new BCryptPasswordEncoder());
     }
 }

@@ -36,7 +36,7 @@ public class DruidConfig {
         servletRegistrationBean.addInitParameter("deny", "");
         // 添加控制台管理用户
         servletRegistrationBean.addInitParameter("loginUsername", "druid");
-        servletRegistrationBean.addInitParameter("loginPassword", "123456");
+        servletRegistrationBean.addInitParameter("loginPassword", "druid");
         // 是否能够重置数据
         servletRegistrationBean.addInitParameter("resetEnable", "false");
         return servletRegistrationBean;

@@ -1,6 +1,7 @@
 package com.example.config;
 
 import com.example.component.LoginHandlerInterceptor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -10,14 +11,15 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
-
+import java.util.Locale;
 //使用WebMvcConfigurerAdapter可以来扩展SpringMVC的功能
 //@EnableWebMvc  接管SpringMVC
-import java.util.Locale;
-
 @Configuration
 @ComponentScan(basePackages = "com.example.config")
 public class MvcConfig implements WebMvcConfigurer {
+
+    @Autowired
+    LoginHandlerInterceptor loginHandlerInterceptor;
 
     /*
      *国际化区域转换
@@ -41,16 +43,15 @@ public class MvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         //国际化这行很关键
         registry.addInterceptor(localeChangeInterceptor());
-
-        registry.addInterceptor(new LoginHandlerInterceptor()).excludePathPatterns ("/",
-                "/index","/druid","/login","/**/*.css","/**/*.js","/**/*.png","/**/*.jpg",
-                "/**/*.jpeg","/**/*.gif","/**/fonts/*","/**/*.svg");
+        System.out.println("测试WebMvcConfigurer--2");
+        registry.addInterceptor(loginHandlerInterceptor).addPathPatterns("/**")
+                .excludePathPatterns ( "/", "/index", "/druid", "/login", "/**/*.css", "/**/*.js",
+                        "/**/*.png","/**/*.jpg","/**/*.jpeg","/**/*.gif","/**/fonts/*","/**/*.svg");
     }
     //视图控制器(视图映射)
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("login");
-        registry.addViewController("/login").setViewName("login");
-        registry.addViewController("/index").setViewName("login");
+        registry.addViewController("/").setViewName("index");
+        registry.addViewController("/index").setViewName("index");
     }
 }

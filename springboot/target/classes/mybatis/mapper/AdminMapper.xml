@@ -7,4 +7,7 @@
     <select id="login" resultType="com.example.bean.Admin">
         select * from admin where username=#{username} and password=#{password}
     </select>
+    <select id="securityLogin" resultType="com.example.bean.Admin">
+        select * from admin where username=#{username}
+    </select>
 </mapper>

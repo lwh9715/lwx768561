@@ -11,7 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+/**
+ * 定义用户相关网址映射的Controller
+ */
 @Controller
 public class LogController {
 

@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-
+/**
+ * 定义用户相关网址映射的Controller
+ */
 @Controller
 public class CustomerController {
 

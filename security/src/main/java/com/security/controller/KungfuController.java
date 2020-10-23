@@ -3,6 +3,7 @@ package com.security.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class KungfuController {
@@ -16,7 +17,7 @@ public class KungfuController {
 
     @GetMapping("/login")
     public String welcome() {
-        return "welcome";
+        return "login";
     }
 
     @GetMapping("/level1/{path}")
@@ -30,5 +31,9 @@ public class KungfuController {
     @GetMapping("/level3/{path}")
     public String top3(@PathVariable("path") String path){
         return PREFIX + "level3/" + path;
+    }
+    @GetMapping("/levels")
+    public String top4(){
+        return PREFIX + "level1/";
     }
 }

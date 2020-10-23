@@ -7,8 +7,9 @@
 <body>
 <!--引入顶部栏-->
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow" th:fragment="topbar">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">
-        [[${session.SignIn}]]</a>
+<!--    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">[[${session.SignIn}]]</a>-->
+    <!--认证之后会显示用户名-->
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" sec:authentication="name"></a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse"
             data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -16,7 +17,10 @@
     <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-            <a class="nav-link" th:href="@{/logout}">Sign out</a>
+            <!--如果没认证-->
+            <a class="nav-link" th:href="@{/login}" sec:authorize="!isAuthenticated()">Sign In</a>
+            <!--如果认证-->
+            <a class="nav-link" th:href="@{/logout}" sec:authorize="isAuthenticated()">Sign Out</a>
         </li>
     </ul>
 </nav>
@@ -33,31 +37,31 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" th:href="@{/orders}">
+                <a class="nav-link" href="#" th:href="@{/orders}" sec:authorize="hasRole('vip1')">
                     <span data-feather="file"></span>
                     动漫
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" th:href="@{/products}">
+                <a class="nav-link" href="#" th:href="@{/products}" sec:authorize="hasRole('vip1')">
                     <span data-feather="shopping-cart"></span>
                     商品
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" th:href="@{/customers}">
+                <a class="nav-link" href="#" th:href="@{/customers}" sec:authorize="hasRole('vip2')">
                     <span data-feather="users"></span>
                     用户
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/logs}">
+                <a class="nav-link" th:href="@{/logs}" sec:authorize="hasRole('vip2')">
                     <span data-feather="bar-chart-2"></span>
                     日志
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/pictures}">
+                <a class="nav-link" th:href="@{/pictures}" sec:authorize="hasRole('vip3')">
                     <span data-feather="layers"></span>
                     图片
                 </a>

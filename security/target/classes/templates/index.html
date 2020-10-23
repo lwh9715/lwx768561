@@ -9,6 +9,7 @@
 	<div align="center">
 	<h1>欢迎光临武林秘籍管理系统</h1>
 		<!--如果没认证-->
+		<!--认证与否的关键在于显示是否问题-->
 		<div sec:authorize="!isAuthenticated()">
 			<h2>游客您好,如果你想看武林秘籍<a th:href="@{/login}">请登录</a></h2>
 		</div>
@@ -48,6 +49,14 @@
 		<li><a th:href="@{/level3/7}">葵花宝典</a></li>
 		<li><a th:href="@{/level3/8}">龟派气功</a></li>
 		<li><a th:href="@{/level3/9}">独孤九剑</a></li>
+		</ul>
+	</div>
+	<div sec:authorize="hasRole('vip')">
+		<h3>绝世武功秘籍</h3>
+		<ul>
+			<li><a th:href="@{/levels}">葵花宝典</a></li>
+			<li><a th:href="@{/levels}">龟派气功</a></li>
+			<li><a th:href="@{/levels}">独孤九剑</a></li>
 		</ul>
 	</div>
 </body>
