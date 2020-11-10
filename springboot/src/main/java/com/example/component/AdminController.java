@@ -32,7 +32,6 @@ public class AdminController {
         if (!StringUtils.isEmpty(login)) {
             //登陆成功，防止表单重复提交，可以重定向到主页,LoginHandlerInterceptor
             httpSession.setAttribute("SignIn", login.getUsername());
-            System.out.println("测试controller--login--1");
             return "index";
         } else {
             //登录失败

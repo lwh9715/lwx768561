@@ -33,7 +33,6 @@ public class AdminServiceImpl implements AdminService, UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Admin admin = adminMapper.securityLogin(username);
-
         if (admin == null) {
             throw new UsernameNotFoundException("查无此人！！");
         }

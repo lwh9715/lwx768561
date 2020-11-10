@@ -45,7 +45,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
-           .antMatchers("/index.html","/error","/login_p", "/static/**","/druid",
+           .antMatchers(    "/index.html","/error","/login_p", "/static/**","/druid",
            "/**/*.png","/**/*.jpg","/**/*.jpeg","/**/*.gif","/**/fonts/*","/**/*.svg","/**/*.css", "/**/*.js");
     }
 
@@ -57,7 +57,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
                 @Override
                 public <O extends FilterSecurityInterceptor> O postProcess(O object) {
+                    //自定义的元数据源类，用来提供鉴权过程中，访问资源所需的角色
                     object.setSecurityMetadataSource(mySecurityMetadataSource);
+                    //鉴权的决策类
                     object.setAccessDecisionManager(myAccessDecisionManager);
                     return object; }})
                 .anyRequest().authenticated()//表示剩余的其他接口，登录之后就能访问

@@ -31,7 +31,7 @@ public class CustomerController {
      * 所以@Cacheable 不能使用result
      */
     //查询单一商品
-    @Cacheable(value = "user", unless = " #id == null ")
+    @Cacheable(value = "user", unless = " #id == user ")
     @GetMapping("/customer/{id}")
     public String getCustomer(@PathVariable("id") Integer id, Model model) {
         Customer customerById = customerService.getCustomerById(id);
@@ -40,6 +40,7 @@ public class CustomerController {
     }
 
     //查询所有员工返回列表页面
+    @Cacheable(value = "user", unless = " #id == null ")
     @GetMapping(value = "/customers")
     public String findAll(Model model,
                           @RequestParam(required = false, defaultValue = "1", value = "pageNum") Integer pageNum,

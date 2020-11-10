@@ -9,7 +9,7 @@ spring:
   datasource:
     username: root
     password: root
-    url: jdbc:mysql://192.168.43.86:3306/docker?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    url: jdbc:mysql://192.168.2.180:3306/docker?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
 
@@ -40,4 +40,4 @@ spring:
       #schema:
     # - classpath:sql/students.sql
   redis:
-    host: 192.168.43.86
+    host: 192.168.2.180
