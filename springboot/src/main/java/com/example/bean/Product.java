@@ -1,9 +1,13 @@
 package com.example.bean;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Product implements Serializable {
 
     private Integer p_id;
@@ -11,13 +15,4 @@ public class Product implements Serializable {
     private Double p_price;
     private String p_date;
 
-    public Product() {
-    }
-
-    public Product(Integer p_id, String p_name, Double p_price, String p_date) {
-        this.p_id = p_id;
-        this.p_name = p_name;
-        this.p_price = p_price;
-        this.p_date = p_date;
-    }
 }

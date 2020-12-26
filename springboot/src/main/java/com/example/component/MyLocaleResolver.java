@@ -1,6 +1,5 @@
 package com.example.component;
 
-import org.springframework.context.annotation.Configuration;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.LocaleResolver;
 

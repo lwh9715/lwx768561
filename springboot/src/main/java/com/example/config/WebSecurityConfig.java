@@ -32,27 +32,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder())
-                .withUser("root").password(new BCryptPasswordEncoder()
-                .encode("123")).roles("vip1").and()
                 .withUser("admin").password(new BCryptPasswordEncoder()
                 .encode("123")).roles("vip1","vip2","vip3");
+
         ////将自定义验证类注册进去(防止数据库数据丢失，设置后门登入)
         auth.authenticationProvider(backdoorAuthenticationProvider);
+
         //加入数据库验证类，下面的语句实际上在验证链中加入了一个DaoAuthenticationProvider
         auth.userDetailsService(myUserDetailService).passwordEncoder(new BCryptPasswordEncoder());
     }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring()
-           .antMatchers(    "/index.html","/error","/login_p", "/static/**","/druid",
-           "/**/*.png","/**/*.jpg","/**/*.jpeg","/**/*.gif","/**/fonts/*","/**/*.svg","/**/*.css", "/**/*.js");
+        web.ignoring().antMatchers("/index.html","/error",
+            "/login_p", "/static/**","/druid","/**/*.png","/**/*.jpg",
+            "/**/*.jpeg","/**/*.gif","/**/fonts/*","/**/*.svg","/**/*.css", "/**/*.js");
     }
 
     // 配置 URL 访问权限
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        System.out.println("测试WebSecurityConfigurerAdapter--1");
         http.authorizeRequests() // 开启 HttpSecurity 配置
             .withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
                 @Override

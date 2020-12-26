@@ -14,8 +14,8 @@ import javax.sql.DataSource;
 @Configuration
 public class DruidConfig {
 
-    //使application.yml文件spring.resource下面的属性配置生效
     @Bean
+    //使application.yml文件spring.resource下面的属性配置生效
     @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource druid() {
         return new DruidDataSource();
@@ -23,7 +23,6 @@ public class DruidConfig {
 
     /**
      * 配置监控服务器
-     *
      * @return 返回监控注册的servlet对象
      */
     @Bean
@@ -44,7 +43,6 @@ public class DruidConfig {
 
     /**
      * 配置服务过滤器
-     *
      * @return 返回过滤器配置对象
      */
     @Bean

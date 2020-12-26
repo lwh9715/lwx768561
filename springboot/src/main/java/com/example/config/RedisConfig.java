@@ -27,7 +27,6 @@ public class RedisConfig extends CachingConfigurerSupport {
 
     /**
      * 配置CacheManager
-     *
      * @return
      */
     @Bean

@@ -1,11 +1,19 @@
 package com.example.bean;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import java.io.Serializable;
+
 /*
 * 资源表resource对应的类
 */
-@Component
-public class Resource {
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Resource implements Serializable {
 
     private Long id;
     private String url;
@@ -14,29 +22,5 @@ public class Resource {
     public String[] getRolesArray(){
         String[] authorities = roles.split(",");
         return authorities;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getRoles() {
-        return roles;
-    }
-
-    public void setRoles(String roles) {
-        this.roles = roles;
     }
 }
