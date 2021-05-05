@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.PictureMapper">
+    <select id="getPictureById" resultType="com.example.bean.Picture">
+        select * from picture where id = #{id}
+    </select>
+    <select id="findPictures" resultType="com.example.bean.Picture">
+        select * from picture
+    </select>
+    <insert id="addPicture" useGeneratedKeys="true" keyProperty="id">
+        insert into picture(picture_name,picture_images) values(#{picture_name},#{picture_images})
+    </insert>
+    <delete id="deletePicture">
+        delete from picture where id = #{id}
+    </delete>
+    <update id="editPicture" parameterType="com.example.bean.Picture">
+        update picture set picture_name = #{picture_name}, picture_images = #{picture_images} where id=#{id}
+    </update>
+</mapper>
